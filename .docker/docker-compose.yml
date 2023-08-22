@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  database: 
+    build: ../db
+    image: c115tb1:database
+    container_name: db
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./data-persist:/var/lib/postgresql/data
+
+  api: 
+    build: ../app
+    image: c115tb1:app
+    container_name: app
+    ports:
+      - "80:80"
+    depends_on:
+      - db

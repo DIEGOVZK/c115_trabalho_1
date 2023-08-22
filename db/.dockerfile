@@ -1,0 +1,8 @@
+FROM postgres:13.11
+
+EXPOSE 5000:5000
+ENV POSTGRES_USER 
+ENV POSTGRES_PASSWORD 
+ENV POSTGRES_DB 
+
+COPY sql /docker-entrypoint-initdb.d
