@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "c115 trabalho 1",
+  "main": "main.js",
+  "scripts": {
+    "test": "validate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DIEGOVZK/c115_trabalho_1.git"
+  },
+  "keywords": [
+    "quiz",
+    "app",
+    "database",
+    "docker"
+  ],
+  "author": "Diego Anestor Coutinho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DIEGOVZK/c115_trabalho_1/issues"
+  },
+  "homepage": "https://github.com/DIEGOVZK/c115_trabalho_1#readme"
+}
