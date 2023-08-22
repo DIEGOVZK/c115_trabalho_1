@@ -3,19 +3,23 @@ version: '3'
 services:
 
   database: 
-    build: ../db
+    build:
+      context: ./db
+      dockerfile: ../db/.dockerfile
     image: c115tb1:database
     container_name: db
     ports:
       - "5000:5000"
-    volumes:
-      - ./data-persist:/var/lib/postgresql/data
+    # volumes:
+    #   - ../db/data-persist:/var/lib/postgresql/data
 
   api: 
-    build: ../app
+    build:
+      context: ./app
+      dockerfile: ../app/.dockerfile
     image: c115tb1:app
     container_name: app
     ports:
       - "80:80"
     depends_on:
-      - db
+      - database
