@@ -1,6 +1,4 @@
 import postgres from 'postgres';
-import path from 'path';
-import fs from 'fs';
 
 class Database {
 
