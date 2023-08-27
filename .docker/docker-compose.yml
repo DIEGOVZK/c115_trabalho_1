@@ -9,7 +9,7 @@ services:
     image: c115tb1:database
     container_name: db
     ports:
-      - "5000:5000"
+      - "5432:5432"
     # volumes:
     #   - ../db/data-persist:/var/lib/postgresql/data
 

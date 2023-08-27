@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import 'mocha';
 
-import Database from '../src/database.ts';
+import Database from '../src/database';
 
-describe('Test suite description', () => {
+describe('Database testing...', () => {
     beforeEach(() => {
         // Code to run before each test case
     });
@@ -21,10 +21,10 @@ describe('Test suite description', () => {
     });
 
     context('Validação de conexão', () => {
-        it('Deve validar a conexão com o banco de dados', () => {
+        it('Deve validar a conexão com o banco de dados', async () => {
             const databaseInstance = Database.getInstace();
-            let queryRes = databaseInstance.query('SELECT 1');
-            expect(queryRes).to.be.true;
+            let queryRes = await databaseInstance.query('SELECT 1');
+            expect(queryRes).to.equal(1);
         });
     });
 });
