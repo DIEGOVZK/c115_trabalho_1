@@ -1,5 +1,5 @@
 FROM node:18-alpine
-EXPOSE 80:80
+EXPOSE 3000:3000
 
 WORKDIR /usr/app
 ADD ./build ./build/
