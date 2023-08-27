@@ -1,3 +1,5 @@
 app/package-lock.json
+userApp/package-lock.json
 app/node_modules
+userApp/node_modules
 app/build
