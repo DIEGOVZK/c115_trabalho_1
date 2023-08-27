@@ -1,37 +1,26 @@
-import promptSync from 'prompt-sync';
 import Forms from './forms';
-
-const prompt = promptSync();
+import WebSocket from 'ws';
 
 async function main() {
+
     const forms = new Forms();
     const questions = await forms.getR3QA();
 
-    let correctAnswers = 0;
+    const server = new WebSocket.Server({ port: 3000 });
 
-    for (let i = 0; i < questions.length; i++) {
-        console.log(`\nPergunta ${i + 1}: ${questions[i].questions}`);
-        console.log(`A) ${questions[i].answerslist[0]}`);
-        console.log(`B) ${questions[i].answerslist[1]}`);
-        console.log(`C) ${questions[i].answerslist[2]}`);
-        console.log(`D) ${questions[i].answerslist[3]}`);
+    server.on('connection', (socket) => {
+        console.log('Client connected');
 
-        const answer = prompt(`Digite sua resposta para a pergunta ${i + 1} (A, B, C ou D): `).toUpperCase();
+        socket.on('message', async (message: WebSocket.Data) => {
+            if (message == 'getQuestions') {
+                socket.send(JSON.stringify(questions));
+            }
+        });
 
-        if (answer === 'A' && questions[i].correctid === 0 ||
-            answer === 'B' && questions[i].correctid === 1 ||
-            answer === 'C' && questions[i].correctid === 2 ||
-            answer === 'D' && questions[i].correctid === 3) {
-            correctAnswers++;
-        }
-    }
-
-    console.log(`\nVocê acertou ${correctAnswers} de ${questions.length} perguntas.\n`);
-
-    for (let i = 0; i < questions.length; i++) {
-        console.log(`Pergunta ${i + 1}: ${questions[i].questions}`);
-        console.log(`Resposta correta: ${questions[i].answerslist[questions[i].correctid]}\n`);
-    }
+        socket.on('close', () => {
+            console.log('Client disconnected');
+        });
+    });
 }
 
 main();
