@@ -23,8 +23,9 @@ describe('Database testing...', () => {
     context('Validação de conexão', () => {
         it('Deve validar a conexão com o banco de dados', async () => {
             const databaseInstance = Database.getInstace();
-            let queryRes = await databaseInstance.query('SELECT 1');
-            expect(queryRes).to.equal(1);
+            const queryRes = await databaseInstance.query('SELECT 1');
+            const value = queryRes[0]['?column?'];
+            expect(value).to.equal(1);
         });
     });
 });

@@ -30,7 +30,7 @@ class Database {
 
     public async query(query: string): Promise<any> {
         try {
-            const result = await this.sql.unsafe(query).then((res: any) => Object.values(res[0])[0]);
+            const result = await this.sql.unsafe(query).then((res: any) => Object.values(res));
             return result;
         } catch (error) {
             throw error;
