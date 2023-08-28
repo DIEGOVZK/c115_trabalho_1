@@ -4,7 +4,7 @@ import WebSocket from 'ws';
 const prompt = promptSync();
 
 async function main() {
-    const ws = new WebSocket('ws://localhost:3000');
+    const ws = new WebSocket('ws://localhost:8080');
 
     ws.on('open', async function () {
         console.log('Connected to server');
