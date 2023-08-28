@@ -20,6 +20,6 @@ services:
     image: c115tb1:app
     container_name: app
     ports:
-      - "80:80"
+      - "8080:3000"
     depends_on:
       - database

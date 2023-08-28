@@ -17,7 +17,7 @@ class Database {
 
     private options = {
 
-        host: '127.0.0.1',
+        host: '172.19.0.2',
         port: 5432,
 
         database: 'appdb',
