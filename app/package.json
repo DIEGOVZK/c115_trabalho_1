@@ -5,6 +5,7 @@
   "main": "./src/main.js",
   "scripts": {
     "build": "mocha -r ts-node/register 'test/**/*.ts' --exit && npx tsc --project tsconfig.json",
+    "build-force": "npx tsc --project tsconfig.json",
     "updep": "npm i --omit=devDependencies --quiet",
     "start": "node build/main.js"
   },
